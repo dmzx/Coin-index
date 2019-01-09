@@ -1,0 +1,29 @@
+{% if COININDEX_ENABLE and S_USER_LOGGED_IN and coinindex %}
+<div class="forabg coin-wrapper">
+	<div class="inner">
+		 <ul class="topiclist">
+			<li class="header">
+				<dl class="row">
+					<dt>{{ lang('COININDEX_INDEX') }}</dt>
+				</dl>
+			</li>
+		 </ul>
+		 <ul class="topiclist forums">
+			<li class="coinlist">
+				<dl>
+				{% for coinindex in loops.coinindex %}
+					<script type="text/javascript">
+						var cf_widget_size = "{{ coinindex.COININDEX_SIZE }}";
+						var cf_widget_from = "{{ coinindex.COININDEX }}";
+						var cf_widget_to = "{{ coinindex.COININDEX_CURRENCY }}";
+						var cf_widget_name = "{{ coinindex.COININDEX_TEXT }}";
+						var cf_clearstyle = true;
+					</script>
+					<script src="https://www.dmzx-web.net/content/widgets/js/render_widget-min.js" type="text/javascript"></script>
+				{% endfor %}
+				</dl>
+			 </li>
+		 </ul>
+	</div>
+</div>
+{% endif %}

@@ -1,0 +1,2 @@
+parameters:
+    tables.coinindex_table: %core.table_prefix%coinindex

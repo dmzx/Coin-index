@@ -1,0 +1,58 @@
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('ACP_COININDEX_TITLE') }}</h1>
+
+<p><img src="https://img.shields.io/badge/{{ lang('Version') }}-{{ COININDEX_VERSION }}-green.svg?style=plastic" /></p>
+
+<form id="acp_coinindex" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('ACP_COININDEX_CONFIG') }}</legend>
+		<dl>
+			<dt>
+				<label for="coinindex_enable">{{ lang('COININDEX_ENABLE') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('COININDEX_ENABLE_EXPLAIN') }}</span></dt>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" id="coinindex_enable" name="coinindex_enable" value="1" {% if COININDEX_ENABLE %}checked="checked"{% endif %}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="coinindex_enable" value="0" {% if not COININDEX_ENABLE %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				<label for="coinindex_respository">{{ lang('COININDEX') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('COININDEX_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<b>{{ lang('COININDEX') }} <span style="margin-left:80px;">{{ lang('COININDEX_TEXT') }}</span><span style="margin-left:70px;">{{ lang('COININDEX_CURRENCY') }}</span><span style="margin-left:80px;">{{ lang('COININDEX_SIZE') }}</span></b>
+				{% for coinindex in loops.coinindex %}
+				<p id="coinindex">
+					<input name="coinindex[]" type="text" value="{{ coinindex.COININDEX }}" size="20" placeholder="{{ lang('COININDEX_PLACEHOLDER') }}">
+					<input name="coinindex_text[]" type="text" value="{{ coinindex.COININDEX_TEXT }}" size="20" placeholder="{{ lang('COININDEX_PLACEHOLDER_NAME') }}">
+					<input name="coinindex_currency[]" type="text" value="{{ coinindex.COININDEX_CURRENCY }}" size="20" placeholder="{{ lang('COININDEX_PLACEHOLDER_CURRENCY') }}">
+					<input name="coinindex_size[]" type="text" value="{{ coinindex.COININDEX_SIZE }}" size="20" placeholder="{{ lang('COININDEX_PLACEHOLDER_SIZE') }}">
+				</p>
+				{% endfor %}
+				<dd>
+					<input value="{{ lang('COININDEX_MORE_LINKS') }}" onclick="add_this('coinindex').value" type="button">
+				</dd>
+			</dd>
+		</dl>
+	</fieldset>
+	<p class="submit-buttons">
+		{{ S_FORM_TOKEN }}
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+	</p>
+</form>
+
+<script>
+function add_this(id)
+{
+	var tableRow = document.getElementById(id);
+	var tableRowClone = tableRow.cloneNode(true);
+	$('input', tableRowClone).val("");
+	tableRow.parentNode.appendChild(tableRowClone, tableRow.previousSibling);
+}
+</script>
+
+{% INCLUDE 'overall_footer.html' %}

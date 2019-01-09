@@ -1,0 +1,39 @@
+{
+	"name": "dmzx/coinindex",
+	"type": "phpbb-extension",
+	"description": "Adds Coin index to your forum index.",
+	"homepage": "https://www.dmzx-web.net",
+	"version": "1.0.0",
+	"time": "2019-01-03",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"coinindex"
+	],
+	"license": "GPL-2.0",
+	"authors": [
+		{
+			"name": "dmzx",
+			"homepage": "https://www.dmzx-web.net",
+			"email": "info@dmzx-web.net",
+			"role": "Extension Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "Coin index",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.2.0-a1,<3.3"
+		},
+		"version-check": {
+			"host": "www.dmzx-web.net",
+			"directory": "/versions",
+			"filename": "coinindex_version.json"
+		}
+	}
+}

@@ -1,0 +1,23 @@
+imports:
+    - { resource: tables.yml }
+services:
+    dmzx.coinindex.admin.controller:
+        class: dmzx\coinindex\controller\admin_controller
+        arguments:
+            - '@config'
+            - '@template'
+            - '@log'
+            - '@user'
+            - '@dbal.conn'
+            - '@request'
+            - '%tables.coinindex_table%'
+    dmzx.coinindex.listener:
+        class: dmzx\coinindex\event\listener
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@request'
+            - '%tables.coinindex_table%'
+        tags:
+            - { name: event.listener }
