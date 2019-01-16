@@ -33,7 +33,8 @@
 		"version-check": {
 			"host": "www.dmzx-web.net",
 			"directory": "/versions",
-			"filename": "coinindex_version.json"
+			"filename": "coinindex_version.json",
+			"ssl": true
 		}
 	}
 }
